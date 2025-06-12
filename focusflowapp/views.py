@@ -1,8 +1,9 @@
 from rest_framework import viewsets
 from .models import Habit, HabitEntry
-from .serializers import HabitSerializer, HabitEntrySerializer, LoginSerializer
+from .serializers import HabitSerializer, HabitEntrySerializer, LoginSerializer, RegisterSerializer
 from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
+from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth import authenticate
@@ -39,7 +40,6 @@ class HabitEntryViewSet(viewsets.ModelViewSet):
         return HabitEntry.objects.filter(habit__user=self.request.user)
 
 
-
 class TokenLoginView(APIView):
     """
     API endpoint for obtaining authentication tokens.
@@ -57,3 +57,7 @@ class TokenLoginView(APIView):
                 return Response({"token": token.key})
             return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class RegisterView(CreateAPIView):
+    serializer_class = RegisterSerializer
+    permission_classes = [AllowAny]

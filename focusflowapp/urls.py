@@ -1,6 +1,6 @@
 from rest_framework.routers import DefaultRouter
 from django.urls import path
-from .views import HabitViewSet, HabitEntryViewSet, TokenLoginView
+from .views import HabitViewSet, HabitEntryViewSet, TokenLoginView, RegisterView
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
@@ -22,6 +22,7 @@ router.register(r'habits', HabitViewSet, basename='habit')
 router.register(r'habit-entry', HabitEntryViewSet, basename='habit-entry')
 
 urlpatterns = [
+    path('register/', RegisterView.as_view(), name='register'),
     path('login/', TokenLoginView.as_view(), name='login'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),

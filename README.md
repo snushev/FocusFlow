@@ -59,6 +59,7 @@ python manage.py createsuperuser
 
 ## 🔐 Authentication
 
+- Register via `/register/`
 - Login via `/login/` with `username` and `password`
 - Copy the returned token and use it as:
 
@@ -83,6 +84,7 @@ Authorization: Token your_token_here
 
 ## ✨ Roadmap
 
+- [x] User registration
 - [x] Token login
 - [x] Habit & entry CRUD
 - [x] User filtering
