@@ -22,6 +22,8 @@ class HabitViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_fields = ['name']
     search_fields = ['name']
+    ordering_fields = ['created_at', 'name']
+    ordering = ['created_at']
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -33,8 +35,10 @@ class HabitEntryViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows habit entries to be viewed or edited.
     """
+
     queryset = HabitEntry.objects.all()
     serializer_class = HabitEntrySerializer
+    ordering = ['-date', 'id']
 
     def get_queryset(self):
         return HabitEntry.objects.filter(habit__user=self.request.user)
@@ -61,3 +65,7 @@ class TokenLoginView(APIView):
 class RegisterView(CreateAPIView):
     serializer_class = RegisterSerializer
     permission_classes = [AllowAny]
+
+    @swagger_auto_schema(request_body=RegisterSerializer)
+    def post(self, request, *args, **kwargs):
+        return super().post(request, *args, **kwargs)

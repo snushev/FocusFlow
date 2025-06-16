@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class HabitSerializer(serializers.ModelSerializer):
     class Meta:
         model = Habit
-        fields = ['name', 'goal_per_day', 'created_at']
+        fields = ['id', 'name', 'goal_per_day', 'created_at']
         read_only_fields = ['id', 'created_at']
 
 class HabitEntrySerializer(serializers.ModelSerializer):
@@ -13,7 +13,6 @@ class HabitEntrySerializer(serializers.ModelSerializer):
         slug_field='name',
         queryset=Habit.objects.all()
     )
-
 
     class Meta:
         model = HabitEntry

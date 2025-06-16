@@ -143,7 +143,7 @@ REST_FRAMEWORK = {
 
 SWAGGER_SETTINGS = {
       'SECURITY_DEFINITIONS': {
-         'DRF Token': {
+         'Token': {
                'type': 'apiKey',
                'name': 'Authorization',
                'in': 'header'
