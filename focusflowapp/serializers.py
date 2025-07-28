@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Habit, HabitEntry
 from django.contrib.auth.models import User
 
+
 class HabitSerializer(serializers.ModelSerializer):
     class Meta:
         model = Habit

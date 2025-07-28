@@ -25,6 +25,7 @@ Built with 💡 Django REST Framework and secured with 🔐 Token Authentication
 - Django REST Framework
 - DRF Authtoken
 - drf-yasg (Swagger)
+- Docker and docker-compose
 
 ---
 
@@ -45,16 +46,7 @@ Built with 💡 Django REST Framework and secured with 🔐 Token Authentication
 
 ```bash
 git clone https://github.com/yourusername/focusflow-api.git
-cd focusflow-api
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py runserver
-```
-
-## 📌 Create a superuser:
-
-```bash
-python manage.py createsuperuser
+docker-compose up --build
 ```
 
 ## 🔐 Authentication
@@ -90,7 +82,7 @@ Authorization: Token your_token_here
 - [x] User filtering
 - [x] Swagger docs
 - [ ] Progress analytics endpoint
-- [ ] Dockerfile
+- [x] Dockerfile
 - [ ] Unit tests
 
 ## 🤝 Contributions
