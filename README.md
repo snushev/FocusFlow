@@ -23,6 +23,7 @@ Built with 💡 Django REST Framework and secured with 🔐 Token Authentication
 - Python 3.11+
 - Django 4.x
 - Django REST Framework
+- PostgreSQL
 - DRF Authtoken
 - drf-yasg (Swagger)
 - Docker and docker-compose
